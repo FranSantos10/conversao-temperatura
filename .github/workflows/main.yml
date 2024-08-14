@@ -1,0 +1,28 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+   # - name: Check out the code
+     - uses: actions/checkout@v2
+     
+     - name: Setup NodeJS
+       uses: actions/setup-node@v3.0.0
+       with:
+        node-version: 16.18.0
+
+     - name: Install Mocha para teste
+       run: |
+        cd src;
+        npm install -g mocha
+        npm install
